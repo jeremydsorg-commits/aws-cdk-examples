@@ -2,6 +2,8 @@
 # SPDX-License-Identifier: MIT-0
 
 import boto3
+from aws_xray_sdk.core import xray_recorder
+from aws_xray_sdk.core import patch_all
 import os
 import json
 import logging
@@ -9,6 +11,8 @@ import uuid
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
+
+patch_all()
 
 dynamodb_client = boto3.client("dynamodb")
 
